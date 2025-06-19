@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justine Wargnier Design Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 2rem auto;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .fade-in {
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Full-screen section -->
+   <section class="w-full h-screen flex flex-col justify-between p-8 md:p-12 lg:p-16 content-section py-20" id="projects">
+  <!-- Header - top left -->
+  <div class="text-3xl md:text-4xl lg:text-5xl tracking-tight fade-in">
+    RAQUE CANETE<br>DESIGN STUDIO
+  </div>
+
+  <!-- Center content -->
+  <div class="flex flex-col items-center justify-center flex-grow">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+      
+      <!-- First text block -->
+      <p class="text-xl md:text-2xl lg:text-3xl text-center fade-in md:text-right md:w-2/4">
+        Where vision<br>meets passion
+      </p>
+
+      <!-- Image slideshow -->
+      <div class="slideshow-container w-[300px] h-[150px] md:w-[900px] md:h-[300px] bg-cover bg-center relative">
+        <div class="slide active absolute inset-0 bg-cover bg-center transition-opacity duration-700" style="background-image: url('https://placehold.co/600x300/000000/FFFFFF/png?text=Orphee+1');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700" style="background-image: url('https://placehold.co/600x300/000000/FFFFFF/png?text=Orphee+2');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700" style="background-image: url('https://placehold.co/600x300/000000/FFFFFF/png?text=Orphee+3');"></div>
+      </div>
+
+      <!-- Second text block -->
+      <p class="text-xl md:text-2xl lg:text-3xl text-center fade-in md:text-left md:w-2/4">
+        for brands<br>with heart
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Footer - bottom left -->
+  <div class="text-sm md:text-base lg:text-lg fade-in px-12 z-10">
+    <p>A creative studio specializing in e-commerce design,</p>
+    <p>crafting strategies as unique as your brand.</p>
+  </div>
+</section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Slideshow functionality
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Show the selected slide
+                slides[index].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            // Initialize first slide
+            showSlide(0);
+            
+            // Start slideshow rotation
+            const slideInterval = setInterval(nextSlide, 3000);
+            
+            // Pause on hover
+            const slideshow = document.querySelector('.slideshow-container');
+            slideshow.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slideshow.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raque Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: {
+                        light: '#4f46e5',
+                        dark: '#6366f1',
+                    },
+                    secondary: {
+                        light: '#f43f5e',
+                        dark: '#fb7185',
+                    }
+                },
+                animation: {
+                    'text-scroll': 'text-scroll 13s linear infinite',
+                    'text-scroll-reverse': 'text-scroll-reverse 13s linear infinite'
+                },
+                keyframes: {
+                    'text-scroll': {
+                        '0%': { transform: 'translateX(100%)' },
+                        '100%': { transform: 'translateX(-100%)' },
+                    },
+                    'text-scroll-reverse': {
+                        '0%': { transform: 'translateX(-100%)' },
+                        '100%': { transform: 'translateX(100%)' },
+                    }
+                },
+                fontFamily: {
+                    orbitron: ['Orbitron', 'sans-serif']
+                }
+            }
+        }
+    }
+</script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-gradient-light {
+                background: linear-gradient(135deg, #eaecf3 0%, #e0d4db 100%);
+            }
+            .bg-gradient-dark {
+                background: linear-gradient(135deg, #1e1d30 0%, #1b1215 100%);
+            }
+            .glassmorphism {
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+            .glassmorphism-dark {
+                background: rgba(0, 0, 0, 0.25);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .tech-text {
+                font-family: 'Courier New', monospace;
+                font-weight: bold;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+            }
+        }
+    </style>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* Previous styles remain... */
+            
+            /* Add these new animation styles */
+            .page-transition {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 9999;
+                background: linear-gradient(135deg, #4f46e5 0%, #f43f5e 100%);
+                opacity: 0;
+                pointer-events: none;
+                transform: scale(1.2);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .page-transition.active {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .dark .page-transition {
+                background: linear-gradient(135deg, #6366f1 0%, #fb7185 100%);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-light dark:bg-gradient-dark transition-colors duration-300" id="home">
+    <header class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-black dark:text-white">
+                <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.176 7.547 7.547 0 01-1.705-1.715.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.546 3.75 3.75 0 013.255 3.718z" clip-rule="evenodd" />
+            </svg>
+        </div>
+
+        <!-- Theme toggle and Download CV button -->
+        <div class="flex items-center space-x-4">
+    <a href="#" id="download-cv" 
+       class="px-6 py-2 rounded-lg font-medium transition-all transform hover:scale-105 shadow-md 
+              glassmorphism dark:glassmorphism-dark text-gray-800 dark:text-white border border-white/20">
+        Download CV
+    </a>
+</div>
+
+    </header>
+    <main class="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-6 py-5 space-y-10">
+        <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-black dark:text-white">
+                <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.176 7.547 7.547 0 01-1.705-1.715.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.546 3.75 3.75 0 013.255 3.718z" clip-rule="evenodd" />
+            </svg><span class="font-orbitron px-2 tracking-wider text-sm dark:text-white">RAQUE CANETE</span>
+        </div>
+    <!-- First Line (scrolling left) -->
+    <div class="relative overflow-hidden w-full">
+        <div class="animate-text-scroll whitespace-nowrap text-[4.5rem] md:text-[8rem] font-orbitron font-extrabold text-black dark:text-gray-200 ">
+            FRONTEND DEVELOPER • UI/UX DESIGNER • FRONTEND DEVELOPER • UI/UX DESIGNER •
+        </div>
+    </div>
+
+    <!-- Second Line (scrolling right) -->
+    <div class="relative overflow-hidden w-full">
+        <div class="animate-text-scroll-reverse whitespace-nowrap text-[4.5rem] md:text-[8rem] font-orbitron font-extrabold text-black dark:text-gray-200">
+            BACKEND SURVIVOR • BUILDING USER INTERFACE (UI) • BACKEND SURVIVOR • BUILDING USER INTERFACE (UI) •
+        </div>
+    </div>
+  <div class="w-12 h-12 flex items-center justify-center rounded-full glassmorphism dark:glassmorphism-dark cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+  <svg class="w-5 h-5 text-black dark:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+  </svg>
+</div>
+
+</main>
+<style>
+  /* Add these styles to your existing CSS */
+  .section-hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+  }
+  
+  .section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+   /* Add a subtle pulse animation to the motto section
+  .glassmorphism1, .glassmorphism-dark {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .glassmorphism1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glassmorphism-dark:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }*/
+  
+  /* Add a subtle pulse animation to the motto section */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+  
+  #motto .glassmorphism1{
+    animation: pulse 8s infinite ease-in-out;
+  }
+  
+  #motto .glassmorphism-dark {
+    animation: pulse 8s infinite ease-in-out;
+  }
+</style>
+
+
+<section id="about" class="min-h-screen flex items-center justify-center px-6 py-20   section-hidden">
+  <div class="max-w-7xl w-full glassmorphism1   text-gray-800 dark:text-gray-100">
+    <h2 class="text-4xl md:text-7xl font-extrabold mb-6 font-orbitron">About Me</h2>
+    
+    <p id="typewriter" class="text-2xl md:text-3xl font-sm leading-relaxed whitespace-pre-line tracking-wider font-orbitron"></p>
+  </div>
+</section>
+<section class="relative w-full min-h-screen flex flex-col justify-between p-4 sm:p-6 md:p-12 lg:p-16">
+  <!-- Header - top left -->
+  <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight fade-in font-orbitron dark:text-white">
+    RAQUE CANETE<br>INDEPENDENT DESIGNER
+  </div>
+
+  <!-- Top right text -->
+  <div class="absolute top-4 right-4 py-20 sm:top-6 sm:right-6 md:top-12 md:right-12 lg:top-16 lg:right-16 text-xs sm:text-sm md:text-base lg:text-lg font-orbitron fade-in dark:text-white text-right max-w-[60%] break-words">
+    <p>Based in Cebu, PH</p>
+    <p>Available for freelance work</p>
+  </div>
+
+  <!-- Center content -->
+  <div class="flex flex-col items-center justify-center flex-grow mt-8 sm:mt-12 w-full">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
+      
+      <!-- First text block -->
+      <p class="w-full md:w-2/5 text-base sm:text-xl md:text-2xl lg:text-3xl text-center fade-in md:text-right font-orbitron dark:text-white mb-4 md:mb-0 px-2">
+        Where vision<br>meets passion
+      </p>
+
+      <!-- Image slideshow -->
+      <div class="slideshow-container w-[90%] sm:w-[300px] md:w-[600px] lg:w-[900px] h-[140px] sm:h-[150px] md:h-[300px] bg-cover bg-center relative overflow-hidden mb-4 md:mb-0">
+        <div class="slide active absolute inset-0 bg-cover bg-center transition-opacity duration-700" style="background-image: url('https://placehold.co/600x300/000000/FFFFFF/png?text=Orphee+1');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700" style="background-image: url('https://placehold.co/600x300/000000/FFFFFF/png?text=Orphee+2');"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700" style="background-image: url('https://placehold.co/600x300/000000/FFFFFF/png?text=Orphee+3');"></div>
+      </div>
+
+      <!-- Second text block -->
+      <p class="w-full md:w-2/5 text-base sm:text-xl md:text-2xl lg:text-3xl text-center fade-in md:text-left font-orbitron dark:text-white px-2">
+        for brands<br>with heart
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer - bottom left -->
+  <div class="text-xs sm:text-sm md:text-base lg:text-xl fade-in px-0 sm:px-12 z-10 font-orbitron dark:text-white py-10">
+    <p>A creative individual specializing Web Design,</p>
+    <p>crafting strategies as unique as your brand.</p>
+  </div>
+
+  <!-- Bottom right text -->
+  <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-12 md:right-12 lg:bottom-16 text-xs sm:text-sm md:text-base lg:text-lg font-orbitron fade-in dark:text-white text-right max-w-[60%] break-words">
+    <p>Let’s build something<br>meaningful together.</p>
+  </div>
+</section>
+
+
+<!-- Script for slideshow -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        slide.style.opacity = '0';
+      });
+      slides[index].classList.add('active');
+      slides[index].style.opacity = '1';
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function startSlideshow() {
+      slideInterval = setInterval(nextSlide, 3000);
+    }
+
+    function stopSlideshow() {
+      clearInterval(slideInterval);
+    }
+
+    // Start the slideshow
+    showSlide(currentSlide);
+    startSlideshow();
+
+    // Pause on hover
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+    slideshowContainer.addEventListener('mouseleave', startSlideshow);
+  });
+</script>
+
+
+
+ <!-- Tech Stack Section -->
+    <section class="max-w-7xl mx-auto py-14">
+      <h2 class="text-4xl md:text-7xl font-bold text-center mb-16 text-gray-800 dark:text-gray-100">
+        My <span class="dark:text-white font-orbitron">Tech Stack</span>
+      </h2>
+
+      <!-- Scrolling Skills Row (desktop only) -->
+      <div class="relative overflow-hidden hidden md:block py-12">
+        <div id="skills-track" class="flex items-center gap-16 w-max will-change-transform">
+          <!-- JavaScript will inject items here -->
+        </div>
+      </div>
+
+      <!-- Static Grid for smaller screens -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-12 md:hidden">
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 flex items-center justify-center mb-3">
+            <img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS Code" class="w-full h-full object-contain animate-float" />
+          </div>
+          <span class="text-xl font-medium text-gray-600 dark:text-gray-300 font-orbitron">VS Code</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 flex items-center justify-center mb-3">
+            <img src="./img/figma-removebg-preview.png" alt="Figma" class="w-full h-full object-contain animate-float" />
+          </div>
+          <span class="text-xl font-medium text-gray-600 dark:text-gray-300 font-orbitron">Figma</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 flex items-center justify-center mb-3">
+            <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML5" class="w-full h-full object-contain animate-float" />
+          </div>
+          <span class="text-xl font-medium text-gray-600 dark:text-gray-300 font-orbitron">HTML5</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 flex items-center justify-center mb-3">
+            <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS3" class="w-full h-full object-contain animate-float" />
+          </div>
+          <span class="text-xl font-medium text-gray-600 dark:text-gray-300 font-orbitron">CSS3</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 flex items-center justify-center mb-3">
+            <img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" alt="Tailwind CSS" class="w-full h-full object-contain animate-float" />
+          </div>
+          <span class="text-xl  font-medium text-gray-600 dark:text-gray-300 font-orbitron">Tailwind</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 flex items-center justify-center mb-3">
+            <img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue.js" class="w-full h-full object-contain animate-float" />
+          </div>
+          <span class="text-xl font-medium text-gray-600 dark:text-gray-300 font-orbitron">Vue.js</span>
+        </div>
+      </div>
+    </section>
+
+  <!-- JavaScript for Carousel Animation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const skills = [
+        { name: 'VS Code', logo: 'https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg' },
+        { name: 'Figma', logo: './img/figma-removebg-preview.png' },
+        { name: 'HTML5', logo: 'https://cdn.worldvectorlogo.com/logos/html-1.svg' },
+        { name: 'CSS3', logo: 'https://cdn.worldvectorlogo.com/logos/css-3.svg' },
+        { name: 'JavaScript', logo: 'https://cdn.worldvectorlogo.com/logos/javascript-1.svg' },
+        { name: 'Tailwind CSS', logo: 'https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg' },
+        { name: 'Vue.js', logo: 'https://cdn.worldvectorlogo.com/logos/vue-9.svg' },
+        { name: 'React', logo: 'https://cdn.worldvectorlogo.com/logos/react-2.svg' }
+      ];
+
+      const track = document.getElementById('skills-track');
+      const duplicate = [...skills, ...skills];
+
+      duplicate.forEach(skill => {
+        const div = document.createElement('div');
+        div.className = 'flex flex-col items-center flex-shrink-0 w-28';
+        div.innerHTML = `
+          <div class="w-20 h-20 flex items-center justify-center mb-2">
+            <img src="${skill.logo}" alt="${skill.name}" class="w-full h-full object-contain hover:scale-110 transition-transform duration-300 animate-float">
+          </div>
+          <span class="text-sm font-medium text-gray-900 dark:text-white font-orbitron">${skill.name}</span>
+        `;
+        track.appendChild(div);
+      });
+
+      let offset = 0;
+      const speed = 0.5;
+
+      function scrollLoop() {
+        offset -= speed;
+        if (Math.abs(offset) >= track.scrollWidth / 2) {
+          offset = 0;
+        }
+        track.style.transform = `translateX(${offset}px)`;
+        requestAnimationFrame(scrollLoop);
+      }
+
+      if (window.innerWidth >= 768) scrollLoop();
+    });
+  </script>
+
+
+<section id="motto" class="min-h-screen flex items-center justify-center px-6 py-20   section-hidden relative overflow-hidden">
+<div class="relative z-10 p-12 max-w-8xl text-center">
+  <!-- Background Text Inside -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <span class="text-[20rem] md:text-[23rem] font-extrabold font-orbitron text-gray-900/20 dark:text-gray-100/15 tracking-wider">
+      QUOTES
+    </span>
+  </div>
+
+  <h2 class="relative text-6xl md:text-8xl font-extrabold font-orbitron text-gray-900 dark:text-gray-100 leading-tight py-12 z-10">
+    Hoping AI doesn't take over my job ... but also hoping it finishes my code...
+  </h2>
+
+  <span class="relative text-lg dark:text-gray-100 tracking-wider font-orbitron z-10">-RAQUE CANETE</span>
+</div>
+
+</section>
+
+<script>
+  // Typewriter effect
+  const typewriterText = `
+Hi, I'm Raque, a passionate Frontend Developer based on Philippines.
+I love crafting visually appealing, responsive interfaces and bringing UX ideas to life with clean code.
+When I'm not coding, I'm probably sketching UI ideas, hiking through nature, or jamming to synthwave beats.
+Let's build something amazing together.
+  `;
+
+  const typewriterEl = document.getElementById('typewriter');
+  let index = 0;
+
+  function typeWriter() {
+    if (index < typewriterText.length) {
+      typewriterEl.innerHTML += typewriterText.charAt(index);
+      index++;
+      setTimeout(typeWriter, 13); // typing speed
+    }
+  }
+
+  // Scroll animation observer
+  const sections = document.querySelectorAll('.section-hidden');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+        
+        // Add extra animation for motto section
+        if (entry.target.id === 'motto') {
+          entry.target.querySelector('div').style.transform = 'scale(1.05)';
+          setTimeout(() => {
+            entry.target.querySelector('div').style.transform = 'scale(1)';
+          }, 300);
+        }
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Start typewriter effect when about section is visible
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && typewriterEl.innerHTML === '') {
+        typeWriter();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  aboutObserver.observe(document.getElementById('about'));
+
+  // Add parallax effect on scroll
+
+</script>
+ <style>
+    .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .social-card {
+        transition: all 0.3s ease, transform 0.2s ease;
+    }
+    .social-card:hover {
+        transform: scale(1.05) translateY(-4px);
+    }
+    .profile-img {
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .profile-img:hover {
+        transform: rotate(5deg) scale(1.05);
+    }
+    .resume-btn {
+        transition: all 0.3s ease;
+        background-size: 200% auto;
+    }
+    .resume-btn:hover {
+        background-position: right center;
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Enhanced glassmorphism effect */
+    .glassmorphism {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Gradient backgrounds for social cards */
+    .facebook-gradient {
+        background: linear-gradient(135deg, #4b97fa 0%, #2063a7 100%);
+    }
+    .instagram-gradient {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    }
+    .github-gradient {
+        background: linear-gradient(135deg, #5e5858 0%, #afa7a7 100%);
+    }
+    .linkedin-gradient {
+        background: linear-gradient(135deg, #9ba9b6 0%, #074a8a 100%);
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 767px) {
+        .profile-section {
+            padding: 1rem;
+            height: auto;
+            min-height: 100vh;
+        }
+        .card-hover {
+            flex-direction: column;
+            padding: 1.5rem;
+            height: auto;
+        }
+        .profile-info {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        .social-grid {
+            width: 100%;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .profile-img {
+            width: 80px;
+            height: 80px;
+        }
+        .floating {
+            display: none; /* Hide decorative elements on mobile */
+        }
+        .button-group {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .button-group button {
+            width: 100%;
+        }
+    }
+
+    /* Tablet adjustments */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .card-hover {
+            flex-direction: column;
+            height: auto;
+            padding: 2rem;
+        }
+        .profile-info, .social-grid {
+            width: 100%;
+        }
+        .profile-info {
+            margin-bottom: 2.5rem;
+        }
+    }
+</style>
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 min-h-screen py-12 sm:py-20 flex items-center justify-center profile-section">
+    <!-- Enhanced Main Card - Wider and Taller -->
+    <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8  dark:glassmorphism-dark p-6 sm:p-8 rounded-3xl shadow-xl card-hover border border-gray-100 dark:border-gray-700 w-full max-w-9xl h-auto sm:h-[65vh]">
+        <!-- Profile Info -->
+        <div class="flex flex-col md:flex-row items-center gap-4 sm:gap-6 md:w-1/2 profile-info">
+            <div class="relative">
+                <img src="./img/profile-removebg-preview.png" alt="Profile" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover profile-img border border-black dark:border-gray-700">
+                <div class="absolute -bottom-2 -right-2 bg-green-500 rounded-full w-6 h-6 sm:w-7 sm:h-7 border-2 border-white dark:border-gray-800"></div>
+            </div>
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl sm:text-4xl font-bold dark:text-gray-100 bg-clip-text text-black font-orbitron">Hi, I'm Raque Canete</h1>
+                <p class="text-gray-800 dark:text-gray-300 mt-2 sm:mt-3 text-base sm:text-xl max-w-md font-orbitron tracking-wider">
+                    I'm a passionate web developer and designer creating beautiful, functional digital experiences. 
+                    I am currently a third-year BSIT student of Cordova Public College. I am willing to help you in making pleasant,
+                    thoughtful design websites. Together lets create something new, Contact me!
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-3 mt-5 sm:mt-6 button-group">
+                    <button class="resume-btn px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium glassmorphism text-black hover:from-blue-600 hover:to-blue-700 transition-all shadow-md dark:text-gray-100">
+                        📄 Resume / CV
+                    </button>
+                    <a href="#contact" class="px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm dark:text-gray-100">
+                        ✉️ Contact Me
+                  </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Cards - Updated to Facebook, Instagram, GitHub, LinkedIn -->
+        <div class="grid grid-cols-2 gap-4 sm:gap-5 md:w-1/2 social-grid">
+            <!-- Facebook Card -->
+            <a href="#" class="social-card facebook-gradient rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-white hover:shadow-lg">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/facebook.svg" class="w-7 h-7 sm:w-8 sm:h-8 mb-2 sm:mb-3" alt="Facebook">
+                <span class="text-sm sm:text-base font-medium font-orbitron">Facebook</span>
+            </a>
+            
+            <!-- Instagram Card -->
+            <a href="#" class="social-card instagram-gradient rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-white hover:shadow-lg">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" class="w-7 h-7 sm:w-8 sm:h-8 mb-2 sm:mb-3" alt="Instagram">
+                <span class="text-sm sm:text-base font-medium font-orbitron">Instagram</span>
+            </a>
+            
+            <!-- GitHub Card -->
+            <a href="#" class="social-card github-gradient rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-white hover:shadow-lg">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" class="w-7 h-7 sm:w-8 sm:h-8 mb-2 sm:mb-3" alt="GitHub">
+                <span class="text-sm sm:text-base font-medium font-orbitron">GitHub</span>
+            </a>
+            
+            <!-- LinkedIn Card -->
+            <a href="#" class="social-card linkedin-gradient rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-white hover:shadow-lg">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/linkedin.svg" class="w-7 h-7 sm:w-8 sm:h-8 mb-2 sm:mb-3" alt="LinkedIn">
+                <span class="text-sm sm:text-base font-medium font-orbitron">LinkedIn</span>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Enhanced Floating Elements - Clean & Functional -->
+<div class="fixed inset-0 -z-10 opacity-30 pointer-events-none">
+  <!-- Large floating elements -->
+  <div class="absolute w-20 h-20 sm:w-32 sm:h-32 rounded-full bg-blue-500/30 floating floating-1" style="top: 10%; left: 5%;"></div>
+  <div class="absolute w-24 h-24 sm:w-40 sm:h-40 rounded-full bg-purple-500/30 floating floating-2" style="bottom: 15%; right: 8%;"></div>
+  <div class="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-pink-500/30 floating floating-3" style="top: 30%; right: 20%;"></div>
+
+  <!-- Medium floating elements -->
+  <div class="absolute w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-emerald-500/20 floating floating-4" style="top: 60%; left: 15%;"></div>
+  <div class="absolute w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-amber-500/20 floating floating-5" style="bottom: 25%; left: 25%;"></div>
+
+  <!-- Small floating elements -->
+  <div class="absolute w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-indigo-500/20 floating floating-6" style="top: 20%; right: 10%;"></div>
+  <div class="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-rose-500/20 floating floating-7" style="bottom: 40%; right: 30%;"></div>
+  <div class="absolute w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-teal-500/20 floating floating-8" style="top: 15%; left: 30%;"></div>
+</div>
+
+<style>
+  /* Base float animation */
+  .floating {
+    animation: float 12s ease-in-out infinite;
+  }
+
+  /* Custom durations and blur per element */
+  .floating-1 { animation-duration: 15s; animation-delay: 0s; }
+  .floating-2 { animation-duration: 18s; animation-delay: 1.5s; filter: blur(5px); }
+  .floating-3 { animation-duration: 14s; animation-delay: 3s; }
+  .floating-4 { animation-duration: 16s; animation-delay: 0.5s; filter: blur(5px); }
+  .floating-5 { animation-duration: 13s; animation-delay: 2.5s; }
+  .floating-6 { animation-duration: 17s; animation-delay: 1s; filter: blur(5px); }
+  .floating-7 { animation-duration: 19s; animation-delay: 3.5s; }
+  .floating-8 { animation-duration: 11s; animation-delay: 2s; filter: blur(5px); }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25%     { transform: translate(-5vw, -5vh) rotate(5deg); }
+    50%     { transform: translate(5vw, 3vh) rotate(-3deg); }
+    75%     { transform: translate(-3vw, 4vh) rotate(2deg); }
+  }
+</style>
+<!-- JavaScript Interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Resume button interaction
+        const resumeBtn = document.querySelector('.resume-btn');
+        if (resumeBtn) {
+            resumeBtn.addEventListener('click', () => {
+                // This would trigger a download in a real implementation
+                console.log('Downloading resume...');
+                
+                // Pulse animation on click
+                resumeBtn.classList.add('animate-pulse');
+                setTimeout(() => {
+                    resumeBtn.classList.remove('animate-pulse');
+                }, 500);
+            });
+        }
+
+        // Social card interactions
+        const socialCards = document.querySelectorAll('.social-card');
+        socialCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05) translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log(`Navigating to ${card.querySelector('span').textContent}`);
+                // In real implementation: window.open(href, '_blank');
+            });
+        });
+    });
+</script>
+ <style type="text/tailwindcss">
+        @layer utilities {
+            .animation-delay-100 {
+                animation-delay: 0.1s;
+            }
+            .animation-delay-200 {
+                animation-delay: 0.2s;
+            }
+            .animation-delay-300 {
+                animation-delay: 0.3s;
+            }
+            .project-card {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.6s ease-out;
+            }
+            .project-card.animate {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-8xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-6xl font-bold text-gray-900 mb-4 font-orbitron dark:text-white">My Recent Projects</h2>
+            <p class="text-2xl text-gray-900 max-w-2xl mx-auto font-orbitron dark:text-white">Here are some of my recent works showcasing my skills in web development and design</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 glassmorphism bg-gradient-dark dark:glassmorphism-dark ">
+                <div class="h-48 overflow-hidden">
+                    <img src="./img/ecommerce.png" 
+                         alt="Project 1" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded ">Tailwind Css</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 font-orbitron dark:text-white">E-commerce Platform (Frontend)</h3>
+                    <p class="text-gray-600 mb-4 font-orbitron dark:text-white">An online store with product listings, cart functionality, and secure checkout.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://raquecanete.github.io/MGENTERPISE/" class="dark:text-blue-500 hover:text-blue-800 font-medium flex items-center text-blue-500">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Live Demo
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800 font-medium flex items-center dark:text-gray-200">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 glassmorphism bg-gradient-dark dark:glassmorphism-dark ">
+                <div class="h-48 overflow-hidden">
+                    <img src="./img/admin.png" 
+                         alt="Project 1" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      <span class="bg-red-200 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded ">HTML</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded ">Tailwind Css</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 font-orbitron dark:text-white">Admin Dashboard</h3>
+                    <p class="text-gray-600 mb-4 font-orbitron dark:text-white">Admin UI managing number of people sending request to their Barangay Officials.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://raquecanete.github.io/adminUI/" class="dark:text-blue-500 hover:text-blue-800 font-medium flex items-center text-blue-500">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Live Demo
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800 font-medium flex items-center dark:text-gray-200">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 glassmorphism bg-gradient-dark dark:glassmorphism-dark">
+                <div class="h-48 overflow-hidden">
+                    <img src="./img/lyric.png" 
+                         alt="Project 1" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      <span class="bg-red-200 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded ">HTML</span>
+                       <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded ">Tailwind Css</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 font-orbitron dark:text-white">Simple Lyric Show</h3>
+                    <p class="text-gray-600 mb-4 font-orbitron dark:text-white">A simple lyric line animation.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://raquecanete.github.io/lyricline/" class="dark:text-blue-500 hover:text-blue-800 font-medium flex items-center text-blue-500">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Live Demo
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800 font-medium flex items-center dark:text-gray-200">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 glassmorphism bg-gradient-dark dark:glassmorphism-dark ">
+                <div class="h-48 overflow-hidden">
+                    <img src="./img/blog.png" 
+                         alt="Project 1" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      <span class="bg-red-200 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded ">HTML</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded ">CSS</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 font-orbitron dark:text-white">Blog Page (IAS)</h3>
+                    <p class="text-gray-600 mb-4 font-orbitron dark:text-white">An Interactive Blog Page for Cybersecurity awareness and cases in PH.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fee6824b9.ias-group1.pages.dev%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBEwNzhaVlg2U1NDMm1LVnVkUgEeDeeufYDt0j3TrUnbxAc9u_HWlKP1svUe9wdb6CCUtfRC1gw94j542lHic-A_aem_vqKQDO1RDQC7q_FD9bhp_w&h=AT3YWkBdFQtD0NZy2qiQrtCKddCbrP50qAMLLfOj0uKK83bBYUQvoRZ4TDGyleHFZSpbaxqsL4ae9t7Dcgqw79flHE91NKl9ERMotPKW6VkExkQD2hhkgP49onsCRagl2IuwTA" class="dark:text-blue-500 hover:text-blue-800 font-medium flex items-center text-blue-500">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Live Demo
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800 font-medium flex items-center dark:text-gray-200">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 glassmorphism bg-gradient-dark dark:glassmorphism-dark ">
+                <div class="h-48 overflow-hidden">
+                    <img src="./img/tonton1.png" 
+                         alt="Project 1" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded ">Tailwind Css</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 font-orbitron dark:text-white">Tonton Sticker Animation</h3>
+                    <p class="text-gray-600 mb-4 font-orbitron dark:text-white">An animation of love from Tonton stickers</p>
+                    <div class="flex space-x-4">
+                        <a href="https://raquecanete.github.io/MyProject/" class="dark:text-blue-500 hover:text-blue-800 font-medium flex items-center text-blue-500">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Live Demo
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800 font-medium flex items-center dark:text-gray-200">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 100); // Stagger the animations
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            projectCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+
+    
+<section class="py-16 px-4 sm:px-6 lg:px-8 glassmorphism dark:glassmorphism-dark  " id="skills-section">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-6xl font-bold text-center mb-12 text-gray-800 relative">
+      <span class="relative inline-block font-orbitron dark:text-white">
+        My Skills
+        <span class="absolute bottom-0 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+      </span>
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- JavaScript -->
+      <div class="skill-item glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:glassmorphism-dark" data-percent="75">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-yellow-50 rounded-lg flex items-center justify-center mr-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-8 h-8">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-800 font-orbitron dark:text-white">JavaScript</h3>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-sm text-gray-500 dark:text-white">Advanced</span>
+              <span class="text-lg font-medium text-gray-700 skill-percent dark:text-white font-orbitron">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div class="skill-progress bg-yellow-400 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+          <span class="text-md font-orbitron dark:text-white">Beginner</span>
+          <span class="text-md font-orbitron dark:text-white">Expert</span>
+        </div>
+      </div>
+      
+      <!-- HTML -->
+      <div class="skill-item glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:glassmorphism-dark" data-percent="85">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mr-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-8 h-8">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-800 font-orbitron dark:text-white">HTML</h3>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-sm text-gray-500 dark:text-white">Expert</span>
+              <span class="text-lg font-medium text-gray-700 skill-percent dark:text-white font-orbitron">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div class="skill-progress bg-orange-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+          <span class="text-md font-orbitron dark:text-white">Beginner</span>
+          <span class="text-md font-orbitron dark:text-white">Expert</span>
+        </div>
+      </div>
+      
+      <!-- CSS -->
+      <div class="skill-item glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:glassmorphism-dark" data-percent="80">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mr-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-8 h-8">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-800 font-orbitron dark:text-white">CSS</h3>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-sm text-gray-500 dark:text-white">Advanced</span>
+              <span class="text-lg font-medium text-gray-700 skill-percent dark:text-white font-orbitron">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div class="skill-progress bg-blue-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+          <span class="text-md font-orbitron dark:text-white">Beginner</span>
+          <span class="text-md font-orbitron dark:text-white">Expert</span>
+        </div>
+      </div>
+      
+      <!-- Tailwind CSS -->
+      <div class="skill-item glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:glassmorphism-dark" data-percent="88">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-cyan-50 rounded-lg flex items-center justify-center mr-4">
+            <img src="./img/tailwind.png" alt="Tailwind CSS" class="w-8 h-8">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-800 font-orbitron dark:text-white">Tailwind CSS</h3>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-sm text-gray-500 dark:text-white">Expert</span> 
+              <span class="text-lg font-medium text-gray-700 skill-percent dark:text-white font-orbitron">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div class="skill-progress bg-cyan-400 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+          <span class="text-md font-orbitron dark:text-white">Beginner</span>
+          <span class="text-md font-orbitron dark:text-white">Expert</span>
+        </div>
+      </div>
+      
+      <!-- Figma -->
+      <div class="skill-item glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:glassmorphism-dark" data-percent="55">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mr-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-8 h-8">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-800 font-orbitron dark:text-white">Figma</h3>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-sm text-gray-500 dark:text-white">Intermediate</span>
+              <span class="text-lg font-medium text-gray-700 skill-percent dark:text-white font-orbitron">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div class="skill-progress bg-purple-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+          <span class="text-md font-orbitron dark:text-white">Beginner</span>
+          <span class="text-md font-orbitron dark:text-white">Expert</span>
+        </div>
+      </div>
+      
+      <!-- Vue.js -->
+      <div class="skill-item glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:glassmorphism-dark " data-percent="40">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mr-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="w-8 h-8">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-800 font-orbitron dark:text-white">Vue.js</h3>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-sm text-gray-500 dark:text-white">Beginner</span>
+              <span class="text-lg font-medium text-gray-700 skill-percent dark:text-white">0%</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div class="skill-progress bg-green-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500">
+          <span>Beginner</span>
+          <span>Expert</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const skillItems = document.querySelectorAll('.skill-item');
+  const animateBtn = document.getElementById('animate-btn');
+  let animationComplete = false;
+  
+  // Function to animate progress bars
+  function animateProgressBars() {
+    skillItems.forEach(item => {
+      const percent = parseInt(item.getAttribute('data-percent'));
+      const progressBar = item.querySelector('.skill-progress');
+      const percentDisplay = item.querySelector('.skill-percent');
+      
+      // Reset animation
+      progressBar.style.width = '0%';
+      percentDisplay.textContent = '0%';
+      
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= percent) {
+          clearInterval(interval);
+          animationComplete = true;
+        } else {
+          width++;
+          progressBar.style.width = width + '%';
+          percentDisplay.textContent = width + '%';
+          
+          // Add pulse effect when reaching target
+          if (width === percent) {
+            progressBar.classList.add('animate-pulse');
+            setTimeout(() => {
+              progressBar.classList.remove('animate-pulse');
+            }, 1000);
+          }
+        }
+      }, 20);
+    });
+  }
+  
+  // Animate when section comes into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animationComplete) {
+        animateProgressBars();
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  const skillsSection = document.getElementById('skills-section');
+  observer.observe(skillsSection);
+  
+  // Replay animation button
+  animateBtn.addEventListener('click', () => {
+    animationComplete = false;
+    animateProgressBars();
+    
+    // Add button feedback
+    animateBtn.classList.add('animate-bounce');
+    setTimeout(() => {
+      animateBtn.classList.remove('animate-bounce');
+    }, 1000);
+  });
+  
+  // Add hover effects to skill cards
+  skillItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const iconContainer = item.querySelector('div:first-child > div:first-child');
+      iconContainer.classList.add('scale-110', 'shadow-md');
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      const iconContainer = item.querySelector('div:first-child > div:first-child');
+      iconContainer.classList.remove('scale-110', 'shadow-md');
+    });
+  });
+});
+</script>
+<style>
+    /* Add to your main CSS file */
+@keyframes wave {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-progress {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Tooltip for skill levels */
+.skill-item {
+  position: relative;
+}
+
+.skill-item::after {
+  content: attr(data-percent)'% mastery';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.skill-item:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+<section id="achievements" class="min-h-screen w-full py-10 md:py-20 px-4 sm:px-6 lg:px-8 glassmorphism1 text-gray-900 font-orbitron dark:text-white">
+    <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-10 md:mb-16">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2 md:mb-4 font-orbitron dark:text-white">My Achievements</h2>
+            <p class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-gray-900 dark:text-white">A showcase of my proudest accomplishments and milestones</p>
+        </div>
+        
+        <!-- Achievement Navigation - Now vertical on mobile -->
+        <div class="flex justify-center mb-8 md:mb-12">
+    <div class="grid grid-cols-2 sm:flex rounded-md gap-2 sm:gap-0" role="group">
+        <button type="button" data-category="all" class="achievement-filter px-4 py-2 text-sm sm:text-md font-medium sm:rounded-l-lg glassmorphism1 text-gray-900 dark:text-white transition-all font-orbitron w-full">
+            All
+        </button>
+        <button type="button" data-category="certificates" class="achievement-filter px-4 py-2 text-sm sm:text-md font-medium glassmorphism1 text-gray-900 dark:text-white transition-all font-orbitron w-full">
+            Certificates
+        </button>
+        <button type="button" data-category="academic" class="achievement-filter px-4 py-2 text-sm sm:text-md font-medium glassmorphism1 text-gray-900 dark:text-white transition-all font-orbitron w-full">
+            Academic
+        </button>
+        <button type="button" data-category="personal" class="achievement-filter px-4 py-2 text-sm sm:text-md font-medium sm:rounded-r-lg glassmorphism1 text-gray-900 dark:text-white transition-all font-orbitron w-full">
+            Personal
+        </button>
+    </div>
+</div>
+        
+        <!-- Achievement Grid - Adjusted gap for mobile -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" id="achievement-container">
+            <!-- Achievement cards will be dynamically loaded here -->
+        </div>
+        
+        <!-- Stats Section - Single column on mobile -->
+        <div class="mt-12 md:mt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+            <div class="p-4 sm:p-6 glassmorphism1 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl sm:text-4xl font-bold mb-2 achievement-counter" data-target="4">0</div>
+                <div class="text-sm sm:text-base text-gray-700 dark:text-gray-300">Projects Completed</div>
+            </div>
+            <div class="p-4 sm:p-6 glassmorphism1 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl sm:text-4xl font-bold mb-2 achievement-counter" data-target="0">0</div>
+                <div class="text-sm sm:text-base text-gray-700 dark:text-gray-300">Awards Won</div>
+            </div>
+            <div class="p-4 sm:p-6 glassmorphism1 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl sm:text-4xl font-bold mb-2 achievement-counter" data-target="3">0</div>
+                <div class="text-sm sm:text-base text-gray-700 dark:text-gray-300">Years Experience</div>
+            </div>
+            <div class="p-4 sm:p-6 glassmorphism1 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl sm:text-4xl font-bold mb-2 achievement-counter" data-target="2">0</div>
+                <div class="text-sm sm:text-base text-gray-700 dark:text-gray-300">Happy Clients</div>
+            </div>
+        </div>
+    </div>
+    
+   <!-- Achievement Modal - Mobile optimized -->
+<div id="achievement-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4 bg-black bg-opacity-70">
+    <div class="glassmorphism rounded-xl w-full max-w-xs sm:max-w-md md:max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div class="p-4 sm:p-6">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white dark:text-white"></h3>
+                    <span id="modal-category" class="inline-block mt-1 px-2 py-1 text-xs font-semibold rounded-full text-white"></span>
+                </div>
+                <button id="close-modal" class="text-white dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-2xl">&times;</button>
+            </div>
+            <div id="modal-date" class="text-sm sm:text-base text-white dark:text-white mb-4"></div>
+            <div class="mb-4 overflow-hidden rounded-lg">
+                <img id="modal-image" src="" alt="" class="w-full h-auto max-h-[300px] object-contain">
+            </div>
+            <div id="modal-description" class="text-sm sm:text-base text-white dark:text-white"></div>
+            <div class="mt-4 sm:mt-6 flex space-x-3">
+                <a id="modal-link" href="#" target="_blank" class="inline-flex items-center px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base glassmorphism1 hover:bg-opacity-80 rounded-lg transition-all">
+                    <i class="fas fa-external-link-alt mr-2"></i> View More
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    // Achievement data
+    const achievements = [
+        {
+            id: 1,
+            title: "Creative Web Design",
+            category: "certificates",
+            date: "December 2023",
+            description: "Received the prestigious Certificate of Training of Creative Web Design that improved my Web Dev efficiency .",
+            image: "./img/tesda.jpg",
+            link: "#"
+        },
+        {
+            id: 2,
+            title: "lorem",
+            category: "academic",
+            date: "May 2022",
+            description: "lorem",
+            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            link: "#"
+        },
+        {
+            id: 3,
+            title: "lorem",
+            category: "personal",
+            date: "October 2021",
+            description: "lorem",
+            image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+            link: "#"
+        },
+        {
+            id: 4,
+            title: "Published Research Paper",
+            category: "academic",
+            date: "March 2023",
+            description: "Co-authored a research paper on machine learning algorithms that was published in a peer-reviewed journal.",
+            image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+            link: "#"
+        },
+        {
+            id: 5,
+            title: "Employee of the Year",
+            category: "certificates",
+            date: "December 2022",
+            description: "Recognized as Employee of the Year for exceptional contributions to company projects and team leadership.",
+            image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+            link: "#"
+        },
+        {
+            id: 6,
+            title: "Volunteer of the Month",
+            category: "personal",
+            date: "August 2021",
+            description: "Awarded Volunteer of the Month for dedicating over 100 hours to community service initiatives.",
+            image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+            link: "#"
+        }
+    ];
+
+    // DOM Elements
+    const achievementContainer = document.getElementById('achievement-container');
+    const filterButtons = document.querySelectorAll('.achievement-filter');
+    const modal = document.getElementById('achievement-modal');
+    const closeModal = document.getElementById('close-modal');
+    const counters = document.querySelectorAll('.achievement-counter');
+
+    // Initialize achievements
+    function loadAchievements(category = 'all') {
+        achievementContainer.innerHTML = '';
+        
+        const filteredAchievements = category === 'all' 
+            ? achievements 
+            : achievements.filter(ach => ach.category === category);
+        
+        filteredAchievements.forEach(achievement => {
+            const card = document.createElement('div');
+            card.className = 'achievement-card group relative glassmorphism p-6 rounded-xl shadow-lg  duration-300 dark:glassmorphism-dark hover:scale-[1.02] cursor-pointer dark:text-white';
+            card.dataset.id = achievement.id;
+            card.dataset.category = achievement.category;
+            
+            card.innerHTML = `
+                <div class="p-6">
+                    <span class="inline-block mb-2 px-2 py-1 text-xs font-semibold rounded-full ${getCategoryClass(achievement.category)}">
+                        ${capitalizeFirstLetter(achievement.category)}
+                    </span>
+                    <h3 class="text-2xl font-bold mb-2 dark:text-white">${achievement.title}</h3>
+                    <p class="text-gray-900 dark:text-white mb-4 text-sm">${achievement.date}</p>
+                    <p class="text-gray-900 line-clamp-2 text-lg dark:text-white">${achievement.description}</p>
+                </div>
+            `;
+            
+            achievementContainer.appendChild(card);
+        });
+        
+        // Add click event to all achievement cards
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const id = parseInt(this.dataset.id);
+                const achievement = achievements.find(ach => ach.id === id);
+                openModal(achievement);
+            });
+        });
+    }
+
+    // Filter achievements
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('glassmorphism','shadow-lg'));
+            this.classList.add('glassmorphism','shadow-lg');
+            
+            // Filter achievements
+            const category = this.dataset.category;
+            loadAchievements(category);
+        });
+    });
+
+    // Open achievement modal
+    function openModal(achievement) {
+        document.getElementById('modal-title').textContent = achievement.title;
+        document.getElementById('modal-date').textContent = achievement.date;
+        document.getElementById('modal-description').textContent = achievement.description;
+        document.getElementById('modal-image').src = achievement.image;
+        document.getElementById('modal-image').alt = achievement.title;
+        document.getElementById('modal-link').href = achievement.link;
+        
+        const categoryElement = document.getElementById('modal-category');
+        categoryElement.textContent = capitalizeFirstLetter(achievement.category);
+        categoryElement.className = `inline-block mt-1 px-2 py-1 text-xs font-semibold rounded-full ${getCategoryClass(achievement.category)}`;
+        
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    // Close modal
+    closeModal.addEventListener('click', function() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    });
+
+    // Animate counters
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = parseInt(counter.dataset.target);
+            const duration = 2000; // Animation duration in ms
+            const step = target / (duration / 16); // 60fps
+            
+            let current = 0;
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.ceil(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+
+    // Helper functions
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function getCategoryClass(category) {
+        const classes = {
+            professional: 'bg-blue-500 text-blue-100',
+            academic: 'bg-green-500 text-green-100',
+            personal: 'bg-purple-500 text-purple-100'
+        };
+        return classes[category] || 'bg-gray-500 text-gray-100';
+    }
+
+    // Initialize
+    loadAchievements();
+    animateCounters();
+    
+    // Set first filter button as active
+});
+</script>
+ <section id="services" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4 font-orbitron dark:text-white">My Services</h2>
+                <p class="text-2xl text-gray-900 font-orbitron dark:text-white">
+                    Professional digital solutions tailored to your specific needs
+                </p>
+            </div>
+
+            <!-- Services List -->
+            <div class="space-y-4">
+                <!-- Service 1 - Web Portfolio -->
+                <div class="service-item  overflow-hidden">
+                    <button class="service-toggle w-full flex justify-between items-center p-6 text-left">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-laptop-code text-black text-xl dark:text-white"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gray-900 font-orbitron dark:text-white ">Personal Portfolio Websites</h3>
+                        </div>
+                        <i class="fas fa-chevron-down text-black dark:text-white transition-transform duration-300"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="px-6 pb-6 pt-2 border-t border-gray-100">
+                            <p class="text-gray-900 font-orbitron mb-4 dark:text-white">
+                                I create stunning, responsive portfolio websites that showcase your work and personality with elegant design and smooth animations.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="text-gray-900 font-orbitron space-y-2 dark:text-white">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Custom design reflecting your brand</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Project showcase with filtering</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Mobile-first responsive design</span>
+                                    </li>
+                                </ul>
+                                <ul class="text-gray-900 font-orbitron dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>SEO optimized structure</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Contact forms integration</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Fast loading performance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6">
+                                <a href="#contact" class="inline-block glassmorphism shadow-lg font-orbitron text-gray-900 px-6 py-2 rounded-lg dark:text-white transition">
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 - UI/UX Design -->
+                <div class="service-item overflow-hidden">
+                    <button class="service-toggle w-full flex justify-between items-center p-6 text-left">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-pencil-ruler text-black text-xl dark:text-white"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gray-900 font-orbitron dark:text-white">UI/UX Design</h3>
+                        </div>
+                        <i class="fas fa-chevron-down text-black dark:text-white transition-transform duration-300"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="px-6 pb-6 pt-2 border-t border-gray-100">
+                            <p class="text-gray-900 font-orbitron mb-4 dark:text-white mb-4">
+                                Professional user interface and experience design that combines aesthetics with functionality for optimal user engagement.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>User research and persona development</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Information architecture planning</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Wireframing and prototyping</span>
+                                    </li>
+                                </ul>
+                              <ul class="text-gray-900 font-orbitron space-y-2 dark:text-white">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Usability testing and iteration</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Design system creation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Accessibility compliance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6">
+                                <a href="#contact" class="inline-block glassmorphism shadow-lg font-orbitron text-gray-900 px-6 py-2 rounded-lg dark:text-white transition">
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 - E-commerce -->
+                <div class="service-item  overflow-hidden">
+                    <button class="service-toggle w-full flex justify-between items-center p-6 text-left">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-shopping-cart text-black text-xl dark:text-white"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gray-900 font-orbitron dark:text-white ">E-commerce Platforms</h3>
+                        </div>
+                        <i class="fas fa-chevron-down dark:text-white text-black transition-transform duration-300"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="px-6 pb-6 pt-2 border-t border-gray-100">
+                            <p class="text-gray-900 font-orbitron mb-4 dark:text-white mb-4">
+                                Complete online store solutions with secure payment processing, inventory management, and conversion-optimized design.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Product catalog management</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Secure payment gateway integration</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Shopping cart and checkout system</span>
+                                    </li>
+                                </ul>
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Order tracking and management</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Customer accounts and reviews</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Mobile-responsive design</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6">
+                                <a href="#contact" class="inline-block glassmorphism shadow-lg font-orbitron text-gray-900 px-6 py-2 rounded-lg dark:text-white transition">
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4 - Figma Designs -->
+                <div class="service-item overflow-hidden">
+                    <button class="service-toggle w-full flex justify-between items-center p-6 text-left">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fab fa-figma text-black dark:text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gray-900 font-orbitron dark:text-white ">Figma Designs</h3>
+                        </div>
+                        <i class="fas fa-chevron-down dark:text-white text-black transition-transform duration-300"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="px-6 pb-6 pt-2 border-t border-gray-100">
+                            <p class="text-gray-900 font-orbitron mb-4 dark:text-white mb-4">
+                                Pixel-perfect Figma designs and interactive prototypes for websites, mobile apps, and digital products.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>High-fidelity mockups</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Interactive prototypes with animations</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Design system components</span>
+                                    </li>
+                                </ul>
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>User flow diagrams</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Design handoff documentation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Collaborative design process</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6">
+                                <a href="#contact" class="inline-block glassmorphism shadow-lg font-orbitron text-gray-900 px-6 py-2 rounded-lg dark:text-white transition">
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5 - Frontend Projects -->
+                <div class="service-item overflow-hidden">
+                    <button class="service-toggle w-full flex justify-between items-center p-6 text-left">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-code text-black dark:text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gray-900 font-orbitron dark:text-white ">Frontend Development</h3>
+                        </div>
+                        <i class="fas fa-chevron-down dark:text-white text-black transition-transform duration-300"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="px-6 pb-6 pt-2 border-t border-gray-100">
+                            <p class="text-gray-900 mb-4 font-orbitron">
+                                Clean, efficient frontend code implementation using modern technologies and best practices.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>HTML5, CSS3, JavaScript (ES6+)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>React.js, Vue.js frameworks</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Tailwind CSS, SASS styling</span>
+                                    </li>
+                                </ul>
+                                <ul class="text-gray-900 font-orbitron  dark:text-white space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Responsive, mobile-first approach</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Performance optimization</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-indigo-500 mt-1 mr-2"></i>
+                                        <span>Cross-browser compatibility</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-6">
+                                <a href="#contact" class="inline-block glassmorphism shadow-lg font-orbitron text-gray-900 px-6 py-2 rounded-lg dark:text-white transition">
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceToggles = document.querySelectorAll('.service-toggle');
+            
+            serviceToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const serviceItem = this.closest('.service-item');
+                    const dropdownContent = serviceItem.querySelector('.dropdown-content');
+                    const chevron = this.querySelector('i');
+                    
+                    // Toggle the clicked item
+                    dropdownContent.classList.toggle('open');
+                    
+                    // Close other open items
+                    serviceToggles.forEach(otherToggle => {
+                        if (otherToggle !== this) {
+                            const otherItem = otherToggle.closest('.service-item');
+                            const otherContent = otherItem.querySelector('.dropdown-content');
+                            const otherChevron = otherToggle.querySelector('i');
+                            
+                            otherContent.classList.remove('open');
+                            otherChevron.classList.remove('rotate-180');
+                        }
+                    });
+                });
+            });
+            
+            // Optional: Open first item by default
+            // document.querySelector('.service-toggle').click();
+        });
+    </script>
+     <style>
+        .service-item {
+            transition: all 0.3s ease;
+        }
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .dropdown-content.open {
+            max-height: 1000px;
+        }
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+ <section class="min-h-screen w-full glassmorphism1 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4 sm:p-8" id="contact">
+  <!-- Contact Container -->
+  <div class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+    <!-- Left Section - Graphic/Info -->
+    <div class="flex flex-col justify-center space-y-6 md:space-y-8 animate-fade-in order-2 lg:order-1">
+      <div class="relative">
+        <!-- Blob elements (hidden on mobile for better space) -->
+        <div class="hidden lg:block absolute -top-8 -left-8 w-32 h-32 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="hidden lg:block absolute -bottom-12 -right-8 w-32 h-32 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="hidden lg:block absolute top-20 -right-4 w-32 h-32 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        
+        <div class="relative space-y-4 md:space-y-6 px-2 sm:px-3">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white font-orbitron">
+            Let's Build <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Something</span> Amazing
+          </h1>
+          <p class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-orbitron">
+            Have a project in mind or want to discuss potential opportunities? I'm always open to interesting conversations and collaborations.
+          </p>
+          
+          <div class="space-y-3 md:space-y-4">
+            <div class="flex items-center space-x-3 md:space-x-4">
+              <div class="p-2 md:p-3 bg-blue-100 dark:bg-blue-900/50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-orbitron">Email</p>
+                <a href="mailto:raquecanete60@gmail.com" class="text-xs sm:text-sm md:text-md font-medium text-gray-800 dark:text-white font-orbitron hover:text-blue-600 dark:hover:text-blue-400 transition-colors">raquecanete60@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-3 md:space-x-4">
+              <div class="p-2 md:p-3 bg-purple-100 dark:bg-purple-900/50 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-orbitron">Phone</p>
+                <a href="tel:+639669103841" class="text-xs sm:text-sm md:text-md font-medium text-gray-800 dark:text-white font-orbitron hover:text-purple-600 dark:hover:text-purple-400 transition-colors">09669103841</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section - Contact Form -->
+    <div class=" p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg order-1 lg:order-2 dark:glassmorphism-dark">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center font-orbitron dark:text-white">
+        <span class="text-black dark:text-white">Get In Touch</span>
+      </h2>
+
+      <div class="space-y-4 sm:space-y-6 md:space-y-8">
+        <!-- Social Cards - Adjusted for mobile -->
+        <div class="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 w-full social-grid">
+          <a href="#" class="social-card facebook-gradient rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/facebook.svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-1" alt="Facebook" />
+            <span class="text-xs sm:text-sm font-medium font-orbitron">Facebook</span>
+          </a>
+          <a href="#" class="social-card instagram-gradient rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-1" alt="Instagram" />
+            <span class="text-xs sm:text-sm font-medium font-orbitron">Instagram</span>
+          </a>
+          <a href="#" class="social-card github-gradient rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-1" alt="GitHub" />
+            <span class="text-xs sm:text-sm font-medium font-orbitron">GitHub</span>
+          </a>
+          <a href="#" class="social-card linkedin-gradient rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 flex flex-col items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/linkedin.svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-1" alt="LinkedIn" />
+            <span class="text-xs sm:text-sm font-medium font-orbitron">LinkedIn</span>
+          </a>
+        </div>
+
+        <!-- Divider -->
+        <div class="relative my-3 md:my-4">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+          </div>
+          <div class="relative flex justify-center">
+            <span class="px-2 text-sm md:text-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800/50">OR</span>
+          </div>
+        </div>
+
+        <!-- Contact Form - Adjusted for mobile -->
+        <form id="contactForm" class="space-y-3 sm:space-y-4 md:space-y-5">
+          <div class="space-y-1">
+            <label for="from_name" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 font-orbitron">Your Name</label>
+            <input
+              type="text"
+              id="from_name"
+              name="from_name"
+              placeholder="Enter your name"
+              required
+              class="w-full px-3 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base border border-gray-300 glassmorphism font-orbitron dark:border-gray-600 rounded-lg sm:rounded-xl  dark:bg-gray-700/50 dark:text-white transition-all duration-200"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label for="from_email" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 font-orbitron">Your Email</label>
+            <input
+              type="email"
+              id="from_email"
+              name="from_email"
+              placeholder="Enter your email address"
+              required
+              class="w-full px-3 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base border border-gray-300 glassmorphism dark:border-gray-600 rounded-lg sm:rounded-xl  dark:bg-gray-700/50 dark:text-white transition-all duration-200 font-orbitron"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label for="message" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 font-orbitron">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Write your message..."
+              required
+              class="w-full px-3 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base border border-gray-300 dark:border-gray-600 glassmorphism sm:rounded-xl  dark:bg-gray-700/50 dark:text-white transition-all duration-200 font-orbitron"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full hover:to-indigo-800 text-white font-medium py-2 sm:py-2.5 md:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg flex items-center justify-center space-x-2 bg-gray-700 hover:bg-gray-800 text-sm sm:text-base"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            <span class="font-orbitron">Send Message</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS with your public key
+  emailjs.init('y1YUxwrJT0BluL2PE'); 
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const resumeBtn = document.querySelector('.resume-btn');
+    const contactForm = document.getElementById('contactForm');
+
+    // Resume download animation
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', () => {
+            console.log('Downloading resume...');
+            resumeBtn.classList.add('animate-pulse');
+            setTimeout(() => resumeBtn.classList.remove('animate-pulse'), 500);
+        });
+    }
+
+    // Hover effect for social cards
+    document.querySelectorAll('.social-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.05) translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(`Navigating to ${card.querySelector('svg').parentElement.getAttribute('aria-label') || 'social link'}`);
+        });
+    });
+
+    // EmailJS form submission
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Create a hidden input to store the time
+        const now = new Date();
+        const formattedTime = now.toLocaleString();
+
+        const timeInput = document.createElement('input');
+        timeInput.type = 'hidden';
+        timeInput.name = 'time';
+        timeInput.value = formattedTime;
+        contactForm.appendChild(timeInput);
+
+        // Send the form via EmailJS
+        emailjs.sendForm('service_6sw1726', 'template_od6y45k', this)
+            .then(() => {
+                alert('Message sent successfully!');
+                contactForm.reset();
+                contactForm.removeChild(timeInput); // Clean up hidden input
+            })
+            .catch((error) => {
+                console.error('Email failed:', error);
+                alert('Failed to send message. Please try again later.');
+                contactForm.removeChild(timeInput); // Clean up hidden input
+            });
+    });
+});
+</script>
+
+<style>
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.facebook-gradient {
+  background: linear-gradient(135deg, #1877F2 0%, #0D5CAB 100%);
+}
+
+.instagram-gradient {
+  background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCAF45 100%);
+}
+
+.github-gradient {
+  background: linear-gradient(135deg, #b3acac 0%, #4e5055 100%);
+}
+
+.linkedin-gradient {
+  background: linear-gradient(135deg, #0c95df 0%, #155e8f 100%);
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+ <footer class="glassmorphism py-8 px-4 sm:px-6 lg:px-8 dark:bg-gradient-dark">
+        <div class="max-w-7xl mx-auto">
+            <!-- Columns section -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 font-orbitron dark:text-white">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Personal Portfolio</a></li>
+                        <li><a href="#services" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">E-commerce Platform</a></li>
+                        <li><a href="#services" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Figma UI Designs</a></li>
+                        <li><a href="#services" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">UI/UX Designs</a></li>
+                    </ul>
+                </div>       
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 font-orbitron dark:text-white">About Me</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Home</a></li>
+                        <li><a href="#about" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">My Info</a></li>
+                        <li><a href="#projects" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Projects</a></li>
+                         <li><a href="#skills-section" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Skills</a></li>
+                          <li><a href="#achievements" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Achievements</a></li>
+                    </ul>
+                </div>
+                
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 font-orbitron dark:text-white">Contact Me</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Facebook</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Gmail</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">Tiktok</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-orbitron dark:text-gray-300">+63 966 9103 841</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-200 my-8"></div>
+            
+            <!-- Bottom section -->
+            <div class="md:flex md:items-center md:justify-between">
+                <p class="text-sm text-gray-600 mb-4 md:mb-0 font-orbitron dark:text-gray-300">
+                    Making the world a better place through constructing elegant hierarchies.
+                </p>
+                <p class="text-sm text-gray-600 font-orbitron dark:text-gray-300">
+                    © 2025 Raque Canete, All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- Glassmorphism Navbar -->
+    <nav class="fixed bottom-6 left-1/2 transform -translate-x-1/2 glassmorphism dark:glassmorphism-dark rounded-full p-2 shadow-lg">
+        <div class="flex items-center space-x-4 px-4">
+            <!-- Home -->
+            <a href="#home" class="p-3 rounded-full hover:bg-white/30 dark:hover:bg-black/30 transition-all" title="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-900 dark:text-white">
+                    <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                    <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                </svg>
+            </a>
+            
+            <!-- About Me -->
+            <a href="#about" class="p-3 rounded-full hover:bg-white/30 dark:hover:bg-black/30 transition-all" title="About Me">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-900 dark:text-white">
+                    <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            
+            <!-- Projects/Code -->
+            <a href="#projects" class="p-3 rounded-full hover:bg-white/30 dark:hover:bg-black/30 transition-all" title="Projects">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-900 dark:text-white">
+                    <path fill-rule="evenodd" d="M14.447 3.027a.75.75 0 01.527.92l-4.5 16.5a.75.75 0 01-1.448-.394l4.5-16.5a.75.75 0 01.921-.526zM16.72 6.22a.75.75 0 011.06 0l5.25 5.25a.75.75 0 010 1.06l-5.25 5.25a.75.75 0 11-1.06-1.06L21.44 12l-4.72-4.72a.75.75 0 010-1.06zm-9.44 0a.75.75 0 010 1.06L2.56 12l4.72 4.72a.75.75 0 11-1.06 1.06L.97 12.53a.75.75 0 010-1.06l5.25-5.25a.75.75 0 011.06 0z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            
+            
+            <!-- GitHub -->
+            <a href="https://github.com" target="_blank" class="p-3 rounded-full hover:bg-white/30 dark:hover:bg-black/30 transition-all" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-900 dark:text-white">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+             <button id="theme-toggle" class="p-2 rounded-full focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white">
+                <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-900 dark:text-white">
+                    <path id="theme-path" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themePath = document.getElementById('theme-path');
+        const html = document.documentElement;
+        const downloadCv = document.getElementById('download-cv');
+
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+
+        // Set initial icon
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themePath.setAttribute('d', 'M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z');
+            } else {
+                themePath.setAttribute('d', 'M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z');
+            }
+        }
+
+        // Download CV button functionality
+        downloadCv.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Gahimo pakog resume, Huwat lang salamat');
+            // In a real implementation, you would link to an actual CV file
+            // window.location.href = '/path/to/cv.pdf';
+        });
+          // Add this new code at the bottom of your script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navbar links that point to other HTML files
+            const navLinks = document.querySelectorAll('nav a[href$=".html"]');
+            const pageTransition = document.getElementById('page-transition');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Skip if it's an external link or anchor
+                    if (this.href.includes('aboutme.html') || this.target === '_blank') return;
+                    
+                    e.preventDefault();
+                    const href = this.href;
+                    
+                    // Activate the transition
+                    pageTransition.classList.add('active');
+                    
+                    // Wait for animation to complete then navigate
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 600); // Match this with your CSS transition duration
+                });
+            });
+
+            // Handle back/forward navigation
+            window.addEventListener('pageshow', function() {
+                pageTransition.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
